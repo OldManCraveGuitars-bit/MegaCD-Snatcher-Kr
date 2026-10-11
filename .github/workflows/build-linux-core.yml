@@ -1,0 +1,33 @@
+name: Build Linux x86_64 dedicated core
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y build-essential zlib1g-dev unzip
+      - name: Unpack the complete modified core source
+        run: |
+          mkdir core-build
+          unzip -q core-source/modified-core-source.zip -d core-build
+      - name: Build libretro core
+        run: make -C core-build -f Makefile.libretro platform=unix -j2
+      - name: Inspect Linux binary
+        run: |
+          file core-build/genesis_plus_gx_libretro.so
+          readelf -h core-build/genesis_plus_gx_libretro.so
+          ldd core-build/genesis_plus_gx_libretro.so
+          nm -D core-build/genesis_plus_gx_libretro.so | grep ' retro_init$'
+          sha256sum core-build/genesis_plus_gx_libretro.so
+      - name: Upload dedicated core
+        uses: actions/upload-artifact@v4
+        with:
+          name: genesis-plus-gx-snatcher-kr-linux-x86_64
+          path: core-build/genesis_plus_gx_libretro.so
+          if-no-files-found: error
