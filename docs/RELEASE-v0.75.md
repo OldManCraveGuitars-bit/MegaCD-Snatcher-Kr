@@ -5,10 +5,10 @@
 ## 무엇을 받나
 
 - Windows 사용: `MegaCD-Snatcher-Kr-v0.75-Windows-Patcher.zip`을 풀고 `SnatcherKRInstaller.exe`를 실행하세요. EXE 단독 다운로드도 같은 프로그램입니다. 원본 BIN을 검사하고 한국어 BIN/CUE와 전용 코어 3종을 한꺼번에 출력합니다.
-- Linux/Android에서 수동 패치: `Snatcher-KR-r249-development-a.bps`, 결과 `.cue`, 해당 플랫폼 `.so`와 공용 `.info`를 받으세요. BPS 지원 도구로 본인이 보유한 정확한 미국판 BIN에 적용해야 합니다. Android APK는 수정하거나 배포하지 않습니다.
+- Linux/Android에서 수동 패치: `Snatcher-KR-r249-development-a.bps`, 결과용 `Snatcher-KR-r249.cue`, 해당 플랫폼 `.so`와 공용 `.info`를 받으세요. CUE 안의 `FILE` 지시문이 가리키는 이름으로 결과 BIN을 저장하세요. BPS 지원 도구로 본인이 보유한 정확한 미국판 BIN에 적용해야 합니다. Android APK는 수정하거나 배포하지 않습니다.
 - 코어의 완전한 개조 소스는 `modified-core-source.zip`, 고지는 `CORE-LICENSE.txt`와 `Galmuri-OFL-1.1.txt`에 있습니다. 게임 원본·결과 BIN, BIOS는 배포하지 않습니다.
 
-자세한 [단계별 패처 사용법·플랫폼 설치·주의사항](../README.md)을 먼저 읽어 주세요.
+자세한 [단계별 패처 사용법·플랫폼 설치·주의사항](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/blob/main/README.md)을 먼저 읽어 주세요.
 
 ## 원본과 결과 해시
 
@@ -17,23 +17,23 @@
 | 입력 `Snatcher (USA).bin` | 625,192,176바이트 | `8d6f4dba8d9ce59991be9f65635047adc3b0f37ea2358f8c48b251883c9e55b6` |
 | 출력 `Snatcher (USA) [KR Voice PC68 English r249].bin` | 625,192,176바이트 | `132465a0f16f40f6d21eda440ba059a6b7da99cf74bb72af35d4afa898404737` |
 
-원본과 결과 CRC32는 각각 `3faf807d`, `04e7b83b`입니다. EXE, BPS, CUE, 세 코어, 소스 ZIP의 SHA-256은 [체크섬 목록](../SHA256SUMS-v0.75.txt)에 모두 기록했습니다. 패치 뒤에는 **결과 `.cue`**를 열어 CD 오디오 트랙을 유지하세요.
+원본과 결과 CRC32는 각각 `3faf807d`, `04e7b83b`입니다. EXE, BPS, CUE, 세 코어, 소스 ZIP의 SHA-256은 [체크섬 목록](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/blob/main/SHA256SUMS-v0.75.txt)에 모두 기록했습니다. 패치 뒤에는 **결과 `.cue`**를 열어 CD 오디오 트랙을 유지하세요.
 
 ## 화면 예시
 
-![r249 타이틀](screenshots/title-r249.png)
+![r249 타이틀](https://raw.githubusercontent.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/main/docs/screenshots/title-r249.png)
 
 r249의 타이틀. 원본 연출을 유지합니다.
 
-![한국어 명령 메뉴](screenshots/korean-menu-r38.png)
+![한국어 명령 메뉴](https://raw.githubusercontent.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/main/docs/screenshots/korean-menu-r38.png)
 
 한국어 명령 메뉴의 개발 중 캡처(r38). 게임 내 문구와 선택문 번역의 예시입니다.
 
-![음성 자막과 초상화](screenshots/voice-subtitle-r249.png)
+![음성 자막과 초상화](https://raw.githubusercontent.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/main/docs/screenshots/voice-subtitle-r249.png)
 
 r249 게임 + r44 전용 코어에서 음성에 따라 나타난 하단 자막. 초상화와 같은 영역을 공유할 수 있습니다.
 
-![복수 초상화](screenshots/intro-portraits-r249.png)
+![복수 초상화](https://raw.githubusercontent.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/main/docs/screenshots/intro-portraits-r249.png)
 
 복수 초상화 장면의 자막 예시. 스크린샷은 서로 다른 검증 시점의 정지 화면이며 전체 게임 동작 보증은 아닙니다.
 

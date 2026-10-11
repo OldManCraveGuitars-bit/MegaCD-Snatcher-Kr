@@ -45,7 +45,7 @@ Windows에서는 출력된 DLL을 RetroArch의 사용자 코어 위치에 복사
 
 ### Windows 없이 수동 적용하기
 
-Linux/Android만 사용하는 사람을 위해 릴리스에 `Snatcher-KR-r249-development-a.bps`, 결과 `.cue`, Linux 전용 `.so`도 개별 자산으로 제공합니다. BPS 지원 패처에서 **위 해시의 원본 BIN → BPS → 새 결과 BIN** 순서로 적용하세요. 결과 BIN 이름을 `Snatcher (USA) [KR Voice PC68 English r249].bin`으로 맞추고, 릴리스의 같은 이름 `.cue`와 같은 폴더에 두세요. 결과 SHA-256이 아래 값과 일치해야 합니다. 이 경로에서는 전용 코어도 별도로 받아야 하며, 원본·결과 게임 자체는 릴리스에 없습니다.
+Linux/Android만 사용하는 사람을 위해 릴리스에 `Snatcher-KR-r249-development-a.bps`, 결과용 `Snatcher-KR-r249.cue`, Linux 전용 `.so`도 개별 자산으로 제공합니다. BPS 지원 패처에서 **위 해시의 원본 BIN → BPS → 새 결과 BIN** 순서로 적용하세요. 결과 BIN 이름을 `Snatcher (USA) [KR Voice PC68 English r249].bin`으로 맞추고, 릴리스의 `Snatcher-KR-r249.cue`와 같은 폴더에 두세요. CUE 안의 `FILE` 지시문이 이 BIN을 가리킵니다. 결과 SHA-256이 아래 값과 일치해야 합니다. 이 경로에서는 전용 코어도 별도로 받아야 하며, 원본·결과 게임 자체는 릴리스에 없습니다.
 
 ## SHA-256 검증
 
