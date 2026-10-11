@@ -37,7 +37,7 @@
 | --- | --- | --- |
 | Windows x86_64 | `genesis_plus_gx_snatcher_kr_libretro.dll` | 패처가 함께 출력합니다. Windows 실행·출력 해시 검증을 수행했습니다. |
 | Android ARM64 | `genesis_plus_gx_snatcher_kr_libretro_android.so` | 패처가 함께 출력합니다. APK는 수정하지 않습니다. 실제 Android 기기의 코어 로딩·게임 재생은 아직 미검증입니다. |
-| Linux x86_64 | `genesis_plus_gx_snatcher_kr_libretro.so` | 패처가 함께 출력하고, 릴리스에서 단독으로도 받을 수 있습니다. Ubuntu 24.04 x86_64에서 빌드·ELF/의존성 검사를 통과했습니다. 게임 재생은 미검증입니다. |
+| Linux x86_64 | `genesis_plus_gx_snatcher_kr_libretro.so` | 패처가 함께 출력하고, 릴리스에서 단독으로도 받을 수 있습니다. Ubuntu 24.04 x86_64에서 빌드·ELF/의존성·동적 로드/libretro API 검사를 통과했습니다. 게임 재생은 미검증입니다. |
 
 Windows에서는 출력된 DLL을 RetroArch의 사용자 코어 위치에 복사하거나 코어 파일을 직접 불러옵니다. Android에서는 출력된 ARM64 SO를 기기로 옮긴 뒤 기기 RetroArch에서 외부 코어 설치/가져오기 기능을 사용합니다. Linux에서는 Linux x86_64 SO와 같은 이름의 `.info`를 코어 및 코어 정보 위치에 두거나 해당 SO를 직접 불러옵니다. 버전·배포 방식에 따라 메뉴 이름과 코어 경로가 다를 수 있으므로 설치된 RetroArch의 안내를 확인하세요. Android용 SO를 Linux용으로, Linux용 SO를 Android용으로 바꿔 쓸 수는 없습니다.
 
@@ -69,6 +69,7 @@ Windows PowerShell에서 수동 확인: `Get-FileHash -Algorithm SHA256 -Literal
 - Windows 패처의 페이로드 검사·UI 기동을 확인했고, Linux 코어 추가형 패처의 전체 크기 원본 BIN 적용 시험에서는 결과 파일 11개가 기대 해시와 일치했습니다. 설치 로직 자동 시험 7/7 통과했습니다. 최종 v0.75 EXE는 세 코어의 페이로드 검사·UI 기동을 통과했습니다.
 - r249/r44의 화면·음성 자막은 일부 장면에서 확인했지만, 모든 대사와 전편을 사람 눈·귀로 최종 승인한 것은 아닙니다. 장면에 따라 자막이 초상화 위에 겹칠 수 있습니다.
 - Android 기기 실사용, 실기 Mega CD, Linux 코어의 실제 게임 재생은 별도 검증이 필요합니다. 해당 결과가 나오기 전까지 검증 완료로 표기하지 않습니다.
+- Linux 코어 빌드와 로더 검사는 [빌드 기록](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/actions/runs/38148610266), [로드 검사 기록](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/actions/runs/38149171528)에 남겨 두었습니다.
 - 문제가 발생하면 게임 화면, 사용 플랫폼·코어 파일 해시, 원본 BIN SHA-256, 해당 장면과 재현 순서를 함께 남겨 주세요. 원본 게임/BIOS 파일은 첨부하지 마세요.
 
 ## 소스와 고지

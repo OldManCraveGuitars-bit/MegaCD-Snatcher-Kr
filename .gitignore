@@ -1,0 +1,14 @@
+# Never add user game data or local emulator installations to this repository.
+*.bin
+*.cue
+*.iso
+*.chd
+*.apk
+*.dll
+*.so
+*.exe
+*.bps
+__pycache__/
+build/
+dist/
+
