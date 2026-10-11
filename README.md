@@ -37,11 +37,15 @@
 | --- | --- | --- |
 | Windows x86_64 | `genesis_plus_gx_snatcher_kr_libretro.dll` | 패처가 함께 출력합니다. Windows 실행·출력 해시 검증을 수행했습니다. |
 | Android ARM64 | `genesis_plus_gx_snatcher_kr_libretro_android.so` | 패처가 함께 출력합니다. APK는 수정하지 않습니다. 실제 Android 기기의 코어 로딩·게임 재생은 아직 미검증입니다. |
-| Linux x86_64 | 준비 중 | Linux에서도 별도 `.so`가 필요합니다. 일반 Linux용 Genesis Plus GX 코어와 구별해야 합니다. |
+| Linux x86_64 | `genesis_plus_gx_snatcher_kr_libretro.so` | 패처가 함께 출력하고, 릴리스에서 단독으로도 받을 수 있습니다. Ubuntu 24.04 x86_64에서 빌드·ELF/의존성 검사를 통과했습니다. 게임 재생은 미검증입니다. |
 
-Windows에서는 출력된 DLL을 RetroArch의 사용자 코어 위치에 복사하거나 코어 파일을 직접 불러옵니다. Android에서는 출력된 ARM64 SO를 기기로 옮긴 뒤 기기 RetroArch에서 외부 코어 설치/가져오기 기능을 사용합니다. 버전·배포 방식에 따라 메뉴 이름과 코어 경로가 다를 수 있으므로 설치된 RetroArch의 안내를 확인하세요. Android용 SO를 Linux용으로, Linux용 SO를 Android용으로 바꿔 쓸 수는 없습니다.
+Windows에서는 출력된 DLL을 RetroArch의 사용자 코어 위치에 복사하거나 코어 파일을 직접 불러옵니다. Android에서는 출력된 ARM64 SO를 기기로 옮긴 뒤 기기 RetroArch에서 외부 코어 설치/가져오기 기능을 사용합니다. Linux에서는 Linux x86_64 SO와 같은 이름의 `.info`를 코어 및 코어 정보 위치에 두거나 해당 SO를 직접 불러옵니다. 버전·배포 방식에 따라 메뉴 이름과 코어 경로가 다를 수 있으므로 설치된 RetroArch의 안내를 확인하세요. Android용 SO를 Linux용으로, Linux용 SO를 Android용으로 바꿔 쓸 수는 없습니다.
 
-패처는 게임 BIN/CUE, Windows DLL, Android SO, 코어 정보 `.info`, 코어·폰트 라이선스, 개조 코어의 전체 소스 ZIP과 빌드 기록을 한 폴더에 출력합니다. 원본 BIN, 기존 파일, RetroArch 설치본은 덮어쓰지 않습니다.
+패처는 게임 BIN/CUE, Windows DLL, Android ARM64 SO, Linux x86_64 SO, 코어 정보 `.info`, 코어·폰트 라이선스, 개조 코어의 전체 소스 ZIP과 빌드 기록을 한 폴더에 출력합니다. 원본 BIN, 기존 파일, RetroArch 설치본은 덮어쓰지 않습니다.
+
+### Windows 없이 수동 적용하기
+
+Linux/Android만 사용하는 사람을 위해 릴리스에 `Snatcher-KR-r249-development-a.bps`, 결과 `.cue`, Linux 전용 `.so`도 개별 자산으로 제공합니다. BPS 지원 패처에서 **위 해시의 원본 BIN → BPS → 새 결과 BIN** 순서로 적용하세요. 결과 BIN 이름을 `Snatcher (USA) [KR Voice PC68 English r249].bin`으로 맞추고, 릴리스의 같은 이름 `.cue`와 같은 폴더에 두세요. 결과 SHA-256이 아래 값과 일치해야 합니다. 이 경로에서는 전용 코어도 별도로 받아야 하며, 원본·결과 게임 자체는 릴리스에 없습니다.
 
 ## SHA-256 검증
 
@@ -54,14 +58,17 @@ Windows에서는 출력된 DLL을 RetroArch의 사용자 코어 위치에 복사
 | 내장 BPS 패치 | 1,113,399 | `622e3c77e5b0f43db8556df4bcf9312293e2e18dbcf52b2e96eb30bdb7a0f028` | `2144df1c` |
 | 출력 Windows r44 DLL | 5,814,955 | `e4ff3f4ee31f8114ba5adf72e7c19f8a02f1b8b1ce5fb8a6670ae2541f97b95e` | `a044b6cc` |
 | 출력 Android ARM64 r44 SO | 8,653,616 | `c51ff189cf4e76d5345736720c3e90ee449806a6afe35dffe33a7e0b1556b7af` | `5e257191` |
+| 출력 Linux x86_64 r44 SO | 8,710,104 | `114f709a38fff20a7f07a6655fb712aef2190746faed8a1cc43477424e65b879` | — |
+| 결과 CUE | 1,389 | `331dd60c3567c67a72398f5d725b78d05754024ca958838e68b90e2f2e9c6637` | `219f44c8` |
+| v0.75 패처 EXE | 34,565,054 | `755bb0f8340a8d219f5513e510f8bdbea2df7ba7f6d00cfd6559d6d786d2a8bc` | — |
 
-Windows PowerShell에서 수동 확인: `Get-FileHash -Algorithm SHA256 -LiteralPath '파일경로'`. Linux에서는 `sha256sum '파일경로'`를 사용할 수 있습니다. 설치 프로그램과 Linux 코어의 해시는 해당 [v0.75 릴리스](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/releases/tag/v0.75)의 자산 목록·릴리스 노트에도 별도로 적습니다.
+Windows PowerShell에서 수동 확인: `Get-FileHash -Algorithm SHA256 -LiteralPath '파일경로'`. Linux에서는 `sha256sum '파일경로'`를 사용할 수 있습니다. 파일명보다 **해시**를 우선하여 판별하세요. 릴리스 ZIP의 해시는 해당 [v0.75 릴리스](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/releases/tag/v0.75)에 별도로 적습니다.
 
 ## 확인 범위와 알려진 제한
 
-- Windows 패처의 페이로드 검사·UI 기동·전체 크기 원본 BIN 적용을 확인했고, 결과 파일 10개가 기대 해시와 일치했습니다. 기존 자동 시험을 합해 14/14 통과했습니다.
+- Windows 패처의 페이로드 검사·UI 기동을 확인했고, Linux 코어 추가형 패처의 전체 크기 원본 BIN 적용 시험에서는 결과 파일 11개가 기대 해시와 일치했습니다. 설치 로직 자동 시험 7/7 통과했습니다. 최종 v0.75 EXE는 세 코어의 페이로드 검사·UI 기동을 통과했습니다.
 - r249/r44의 화면·음성 자막은 일부 장면에서 확인했지만, 모든 대사와 전편을 사람 눈·귀로 최종 승인한 것은 아닙니다. 장면에 따라 자막이 초상화 위에 겹칠 수 있습니다.
-- Android 기기 실사용, 실기 Mega CD, Linux 코어 실행은 별도 검증이 필요합니다. 해당 결과가 나오기 전까지 검증 완료로 표기하지 않습니다.
+- Android 기기 실사용, 실기 Mega CD, Linux 코어의 실제 게임 재생은 별도 검증이 필요합니다. 해당 결과가 나오기 전까지 검증 완료로 표기하지 않습니다.
 - 문제가 발생하면 게임 화면, 사용 플랫폼·코어 파일 해시, 원본 BIN SHA-256, 해당 장면과 재현 순서를 함께 남겨 주세요. 원본 게임/BIOS 파일은 첨부하지 마세요.
 
 ## 소스와 고지

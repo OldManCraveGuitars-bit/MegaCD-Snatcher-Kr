@@ -1,0 +1,31 @@
+name: Verify v0.75 Linux core load
+
+on:
+  workflow_dispatch:
+
+jobs:
+  load:
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - name: Download the exact Linux build artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 38148610266 \
+            --repo OldManCraveGuitars-bit/MegaCD-Snatcher-Kr \
+            --name genesis-plus-gx-snatcher-kr-linux-x86_64 \
+            --dir core
+      - name: Verify identity and libretro API load
+        run: |
+          echo '114f709a38fff20a7f07a6655fb712aef2190746faed8a1cc43477424e65b879  core/genesis_plus_gx_libretro.so' | sha256sum --check
+          python3 - <<'PY'
+          import ctypes
+          core = ctypes.CDLL('./core/genesis_plus_gx_libretro.so')
+          core.retro_api_version.restype = ctypes.c_uint
+          version = core.retro_api_version()
+          assert version == 1, version
+          print(f'Linux shared library loaded; libretro API version {version}')
+          PY
