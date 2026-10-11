@@ -37,6 +37,18 @@ r249 게임 + r44 전용 코어에서 음성에 따라 나타난 하단 자막. 
 
 복수 초상화 장면의 자막 예시. 스크린샷은 서로 다른 검증 시점의 정지 화면이며 전체 게임 동작 보증은 아닙니다.
 
+### 오프닝 사진 12장 추가
+
+초반 한국어 문구, 녹색 헌정 문구, 내레이션과 후반 기계 연출을 [오프닝 갤러리](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/blob/main/docs/OPENING-GALLERY.md)에 모았습니다. 다음은 일부 미리보기입니다. 이 12장은 v0.75 직전 r248/r43의 실제 녹화에서 추출했으며, v0.75의 모든 픽셀이나 음성 동기화가 같다는 뜻은 아닙니다.
+
+![오프닝 초반 문구](https://raw.githubusercontent.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/main/docs/screenshots/opening-r248-t010.png)
+
+![녹색 헌정 문구](https://raw.githubusercontent.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/main/docs/screenshots/opening-r248-t030.png)
+
+![오프닝 복도와 한국어 자막](https://raw.githubusercontent.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/main/docs/screenshots/opening-r248-t052.png)
+
+![기계 손 연출](https://raw.githubusercontent.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/main/docs/screenshots/opening-r248-t108.png)
+
 ## 검증 수준
 
 - 패처 자동 시험 7/7, 패키징 EXE의 페이로드 검사와 UI 기동 통과. Linux 코어 추가형의 625MB 실원본 적용 1/1, 결과 11/11 파일·잔여 부분 파일 0. 최종 EXE는 Linux 코어 출력 이름만 정리해 다시 패키징했고, 페이로드/UI 검사를 통과했습니다.

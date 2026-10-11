@@ -17,6 +17,14 @@
 
 스크린샷은 실제 개발·검증 실행의 정지 화면이며, 서로 다른 시점의 캡처를 함께 보여줍니다. 한 장의 그림만으로 모든 장면의 표시 품질이나 타이밍을 보증하지 않습니다.
 
+### 오프닝 장면 더 보기
+
+오프닝의 초반 문구부터 내레이션·사이보그 연출까지 **12장**을 [오프닝 갤러리](docs/OPENING-GALLERY.md)에 추가했습니다. 아래 미리보기는 v0.75 직전 r248/r43의 정상 속도 녹화에서 추출한 실제 프레임입니다. v0.75와 픽셀·자막 시점이 완전히 동일하다는 주장은 아닙니다.
+
+| 초반 문구 | 한국어 헌정 문구 | 내레이션 장면 | 후반 연출 |
+| --- | --- | --- | --- |
+| ![허구 고지](docs/screenshots/opening-r248-t010.png) | ![녹색 헌정](docs/screenshots/opening-r248-t030.png) | ![복도 자막](docs/screenshots/opening-r248-t052.png) | ![기계 손](docs/screenshots/opening-r248-t108.png) |
+
 ## 받기 전에 확인할 것
 
 1. [Releases](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/releases)에서 `v0.75`의 `SnatcherKRInstaller.exe` 또는 같은 EXE가 든 ZIP을 받습니다. **Windows 64비트용 패처**이며 APK 생성기나 RetroArch 수정 도구가 아닙니다.
