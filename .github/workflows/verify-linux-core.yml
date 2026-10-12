@@ -1,4 +1,4 @@
-name: Verify v0.75 Linux core load
+name: Verify v0.76 Linux core load
 
 on:
   workflow_dispatch:
@@ -14,13 +14,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh run download 38148610266 \
+          gh run download 38273324130 \
             --repo OldManCraveGuitars-bit/MegaCD-Snatcher-Kr \
             --name genesis-plus-gx-snatcher-kr-linux-x86_64 \
             --dir core
       - name: Verify identity and libretro API load
         run: |
-          echo '114f709a38fff20a7f07a6655fb712aef2190746faed8a1cc43477424e65b879  core/genesis_plus_gx_libretro.so' | sha256sum --check
+          echo 'b80f2203d5ca16cf8733d6bd2d99099d528a2fb046c7f271df5b98d3670e5b3d  core/genesis_plus_gx_libretro.so' | sha256sum --check
           python3 - <<'PY'
           import ctypes
           core = ctypes.CDLL('./core/genesis_plus_gx_libretro.so')
