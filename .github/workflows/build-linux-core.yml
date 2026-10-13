@@ -2,6 +2,11 @@ name: Build Linux x86_64 dedicated core
 
 on:
   workflow_dispatch:
+    inputs:
+      source_sha256:
+        description: Expected modified-core-source.zip SHA-256
+        required: true
+        type: string
 
 jobs:
   build:
@@ -13,7 +18,15 @@ jobs:
       - name: Install build dependencies
         run: sudo apt-get update && sudo apt-get install -y build-essential zlib1g-dev unzip
       - name: Unpack the complete modified core source
+        env:
+          EXPECTED_SOURCE_SHA256: ${{ inputs.source_sha256 }}
         run: |
+          python3 - <<'PY'
+          import hashlib, os, pathlib, re
+          expected = os.environ['EXPECTED_SOURCE_SHA256']
+          assert re.fullmatch(r'[0-9a-f]{64}', expected), 'invalid SHA-256'
+          assert hashlib.sha256(pathlib.Path('core-source/modified-core-source.zip').read_bytes()).hexdigest() == expected
+          PY
           mkdir core-build
           unzip -q core-source/modified-core-source.zip -d core-build
       - name: Build libretro core
@@ -25,6 +38,15 @@ jobs:
           ldd core-build/genesis_plus_gx_libretro.so
           nm -D core-build/genesis_plus_gx_libretro.so | grep ' retro_init$'
           sha256sum core-build/genesis_plus_gx_libretro.so
+      - name: Verify shared library and libretro API load
+        run: |
+          python3 - <<'PY'
+          import ctypes
+          core = ctypes.CDLL('./core-build/genesis_plus_gx_libretro.so')
+          core.retro_api_version.restype = ctypes.c_uint
+          assert core.retro_api_version() == 1
+          print('Linux shared library loaded; libretro API version 1')
+          PY
       - name: Upload dedicated core
         uses: actions/upload-artifact@v4
         with:
