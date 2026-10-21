@@ -66,6 +66,4 @@ Windows PowerShell의 `Get-FileHash -Algorithm SHA256 -LiteralPath '파일경로
 
 ## 관련 프로젝트 — Nintendo DS(NDS) 포팅
 
-[**DS-Snatcher-Kr-MegaCD-Porting — GitHub**](https://github.com/OldManCraveGuitars-bit/DS-Snatcher-Kr-MegaCD-Porting): 이 한글패치의 번역·보이스 자막을 바탕으로, DS의 상단 화면에는 장면을, 하단에는 한국어 대사·초상화·선택지와 터치 조작을 배치한 비공식 이식입니다.
-
-현재 [NDS v0.811](https://github.com/OldManCraveGuitars-bit/DS-Snatcher-Kr-MegaCD-Porting/releases/tag/v0.811)은 **Mega-CD v0.81 자료 기반의 전체 테스트용 버전**입니다. 이번 v0.9 교정이 자동으로 포함된 것은 아니며, 버그·미검증 구간이 남아 있습니다. NDS판은 별도 패처와 실행 안내를 따르며 사용자 소유 원본 게임·지원 BIOS가 필요합니다. 이 릴리스의 DLL/SO를 NDS용으로 사용하는 방식은 아닙니다.
+[**DS-Snatcher-Kr-MegaCD-Porting — GitHub**](https://github.com/OldManCraveGuitars-bit/DS-Snatcher-Kr-MegaCD-Porting): 이 한글패치를 바탕으로 만든 Nintendo DS용 비공식 포팅 프로젝트도 있습니다.
