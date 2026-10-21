@@ -6,6 +6,12 @@
 
 이 저장소와 배포 파일에는 원본 게임 이미지, 패치 완료된 전체 게임 이미지, BIOS, RetroArch APK가 없습니다. 본인이 보유한 정확한 미국판 BIN과 별도 BIOS가 필요합니다. 비공식·비상업적 팬 프로젝트이며 Konami, Sega, Libretro와 제휴하지 않았습니다. **v0.9는 시험판**입니다. 이번에는 메탈기어의 존댓말 혼용과 ACT 2 국장 회상 설명의 말투·호칭을 교정했습니다. 전체 등장인물의 문맥 재검수 완료나 전편 모든 분기 플레이·모든 기기의 동작 보증을 뜻하지 않습니다.
 
+## Nintendo DS(NDS) 포팅 버전
+
+[**DS-Snatcher-Kr-MegaCD-Porting — GitHub**](https://github.com/OldManCraveGuitars-bit/DS-Snatcher-Kr-MegaCD-Porting)는 이 한글패치의 번역·보이스 자막을 바탕으로 만든 **Nintendo DS용 비공식 이식 프로젝트**입니다. 상단에는 게임 장면, 하단에는 한국어 대사·초상화·선택지와 터치 조작을 배치했습니다.
+
+현재 [NDS v0.811](https://github.com/OldManCraveGuitars-bit/DS-Snatcher-Kr-MegaCD-Porting/releases/tag/v0.811)은 **Mega-CD v0.81 자료 기반의 전체 테스트용 버전**이며, 이번 v0.9 교정이 자동으로 포함된 것은 아닙니다. 버그·미검증 구간이 남아 있습니다. 이 저장소의 DLL/SO 대신 **NDS 저장소의 별도 패처와 실행 안내**를 이용하세요. 사용자 소유 원본 게임과 지원 BIOS가 필요하며 완성 NDS는 배포하지 않습니다.
+
 ## v0.9 변경 사항
 
 - **메탈기어 본문 4곳·보이스 자막 22개**의 반말 혼용을 존댓말로 교정했습니다. 예: `병원 복도야` → `병원 복도입니다`, `그건 수사 경비인데` → `그건 수사 경비인데요`. 인접한 길리언의 응답은 그대로 두었습니다.

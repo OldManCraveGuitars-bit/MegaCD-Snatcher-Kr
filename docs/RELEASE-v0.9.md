@@ -63,3 +63,9 @@ Windows PowerShell의 `Get-FileHash -Algorithm SHA256 -LiteralPath '파일경로
 - Windows DLL 로드, Android ARM64 ELF와9필수 libretro exports, Linux ELF/의존성/동적 로드·API1을 확인했습니다. [이번 Linux Actions 실행](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/actions/runs/39643342748)은 고정된 r52 소스 ZIP으로 Ubuntu24.04에서 빌드했습니다. Android는 NDK r30/API21로 빌드했습니다.
 - 3종 코어 모두 메탈 변경27그림과 회상75쪽의 최종 자산 포함 여부를 검사했습니다. 전체980소스 중 이전판과 달라진 것은 자막 그림 헤더1파일이며 나머지979파일은 같습니다. 전체 대응 소스와 라이선스·재현 명령을 동봉합니다. 소스 ZIP SHA-256: `863cd31221439d4aa5747e7303262592d684362b3acb09be347c9fd360adf782`.
 - 새 전편 플레이·전체 인물 재검수·전편 청취·Android/Linux 실제 게임·실기 검증은 하지 않았습니다. 이미 해결된3인 초상화 반복 재생은 생략했고, 기존 화면 자료는 실제 촬영 버전을 표시해 보존했습니다.
+
+## 관련 프로젝트 — Nintendo DS(NDS) 포팅
+
+[**DS-Snatcher-Kr-MegaCD-Porting — GitHub**](https://github.com/OldManCraveGuitars-bit/DS-Snatcher-Kr-MegaCD-Porting): 이 한글패치의 번역·보이스 자막을 바탕으로, DS의 상단 화면에는 장면을, 하단에는 한국어 대사·초상화·선택지와 터치 조작을 배치한 비공식 이식입니다.
+
+현재 [NDS v0.811](https://github.com/OldManCraveGuitars-bit/DS-Snatcher-Kr-MegaCD-Porting/releases/tag/v0.811)은 **Mega-CD v0.81 자료 기반의 전체 테스트용 버전**입니다. 이번 v0.9 교정이 자동으로 포함된 것은 아니며, 버그·미검증 구간이 남아 있습니다. NDS판은 별도 패처와 실행 안내를 따르며 사용자 소유 원본 게임·지원 BIOS가 필요합니다. 이 릴리스의 DLL/SO를 NDS용으로 사용하는 방식은 아닙니다.
