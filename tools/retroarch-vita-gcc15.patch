@@ -1,6 +1,12 @@
 diff --git a/gfx/drivers/vita2d_gfx.c b/gfx/drivers/vita2d_gfx.c
 --- a/gfx/drivers/vita2d_gfx.c
 +++ b/gfx/drivers/vita2d_gfx.c
-@@ -220,1 +220,1 @@
+@@ -217,7 +217,7 @@
+       vertices[i].a = *color++;
+    }
+ 
 -   vita2d_draw_array_textured_mat(texture, vertices, draw->coords->vertices, &vita2d->mvp_no_rot);
 +   vita2d_draw_array_textured_mat(texture, vertices, draw->coords->vertices, vita2d->mvp_no_rot.data);
+ }
+ 
+ static void gfx_display_vita2d_scissor_begin(void *data,
