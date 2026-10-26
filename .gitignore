@@ -9,6 +9,12 @@
 *.exe
 *.bps
 __pycache__/
+*.self
+*.elf
+*.velf
+*.a
+vita-build/
+vita-out/
 build/
 dist/
 

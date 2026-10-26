@@ -1,0 +1,27 @@
+name: Build PS Vita dedicated core
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build in pinned VitaSDK
+        run: |
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/workspace" -w /workspace \
+            -e GITHUB_SHA -e GITHUB_SERVER_URL -e GITHUB_REPOSITORY -e GITHUB_RUN_ID \
+            vitasdk/vitasdk@sha256:7f5eee50ff95b73c8c847dbfef6227aa0035886444b4d0254c21da8369ff1efc \
+            bash tools/build_vita.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: snatcher-kr-vita-build
+          path: vita-out/
+          if-no-files-found: error
