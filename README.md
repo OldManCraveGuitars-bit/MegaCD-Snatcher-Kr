@@ -25,6 +25,14 @@
 
 [**DS-Snatcher-Kr-MegaCD-Porting — GitHub**](https://github.com/OldManCraveGuitars-bit/DS-Snatcher-Kr-MegaCD-Porting): 이 한글패치를 바탕으로 만든 Nintendo DS용 비공식 포팅 프로젝트도 있습니다.
 
+## PS Vita 전용 코어 시험판
+
+[**V1.0 Vita 시험판 다운로드**](https://github.com/OldManCraveGuitars-bit/MegaCD-Snatcher-Kr/releases/tag/v1.0-vita-test1) · [**비타 설치 방법**](docs/PS-VITA.md)
+
+비타 RetroArch용 `genesis_plus_gx_snatcher_kr_libretro.self`를 별도로 제공합니다. V1.0 한글 게임과 r61 보이스 자막을 그대로 사용합니다. **빌드·ARM 형식·자막 데이터 33/33개 내장 검사는 통과했지만 비타 실기 실행은 미확인인 시험판**입니다. 기존 Windows 패처에 들어 있지 않으므로 Vita ZIP을 별도로 받으세요.
+
+Vita는 코어와 RetroArch 실행부를 하나의 SELF에 링크하는 구조입니다. 이 시험판은 RetroArch 1.22.2 일반 Vita 프런트엔드를 포함하며, 최신 컴파일러에 맞춘 메뉴 행렬 포인터 타입 수정 1곳이 있습니다. 기존 일반 코어와 다른 이름으로 추가하며, 설치 안내·해시·해당 프런트엔드와 코어 소스·라이선스를 함께 제공합니다.
+
 ## 화면 예시
 
 ### v0.77에서 복원한 첫 폐허 이동 독백
