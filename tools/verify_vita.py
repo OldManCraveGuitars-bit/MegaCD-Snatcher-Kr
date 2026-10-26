@@ -43,6 +43,8 @@ def main():
                 'kr_host_caption_begin_frame', 'kr_host_ending_quote_finalize_frame']
     for symbol in required:
         assert re.search(r'\b' + symbol + r'$', symbols, re.M), symbol
+    for symbol in ['crc32', 'snatcher_kr_crc32']:
+        assert re.search(r'\bT ' + symbol + r'$', symbols, re.M), symbol
     for name, data in banks.items():
         assert data in elf, f'missing or changed caption bank: {name}'
     source_self = RA / 'retroarch_vita.self'
@@ -66,6 +68,8 @@ def main():
             os.environ.get('GITHUB_SERVER_URL', 'https://github.com'),
             os.environ.get('GITHUB_REPOSITORY', ''), os.environ.get('GITHUB_RUN_ID', '')),
         'architecture': 'ELF32 little-endian ARM', 'elf_flags': hex(flags),
+        'core_cppflags': '-Dcrc32=snatcher_kr_crc32',
+        'crc_implementations_separate': True,
         'elf_sha256': sha(elf), 'required_symbols': required,
         'caption_banks': {name: {'bytes': len(data), 'sha256': sha(data)}
                           for name, data in banks.items()},

@@ -27,9 +27,11 @@ mkdir -p vita-out/licenses
 cp -a "$VITASDK/share/vdpm/licenses" vita-out/licenses/sdk-packages
 cp -a vita-out/licenses vita-build/source/SDK-LICENSES
 find "$VITASDK/share/vdpm" -maxdepth 2 -type f > vita-out/sdk-package-records.txt
-make -C vita-build/core -f Makefile.libretro platform=vita -j2
+# Both the core and the frontend's zlib define crc32. Keep the core's
+# implementation and its callers together under a private symbol.
+make -C vita-build/core -f Makefile.libretro platform=vita CPPFLAGS=-Dcrc32=snatcher_kr_crc32 -j4
 cp vita-build/core/genesis_plus_gx_libretro_vita.a vita-build/RetroArch/libretro_vita.a
-make -C vita-build/RetroArch -f Makefile.vita -j2 retroarch_vita.self
+make -C vita-build/RetroArch -f Makefile.vita -j4 retroarch_vita.self
 python3 tools/verify_vita.py
 cp vita-out/BUILD-VITA.json vita-build/source/
 tar -cJf vita-out/Snatcher-KR-V1.0-Vita-source.tar.xz -C vita-build/source .
