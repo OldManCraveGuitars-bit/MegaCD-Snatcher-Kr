@@ -58,6 +58,8 @@ def main():
         'core_source_sha256': os.environ['CORE_SHA'],
         'caption_header_sha256': HEADER_SHA,
         'retroarch_tag': 'v1.22.2', 'retroarch_commit': os.environ['RA_COMMIT'],
+        'retroarch_patch': 'tools/retroarch-vita-gcc15.patch',
+        'retroarch_patch_sha256': sha((ROOT / 'tools/retroarch-vita-gcc15.patch').read_bytes()),
         'sdk_image': os.environ['SDK_IMAGE'],
         'build_commit': os.environ.get('GITHUB_SHA'),
         'workflow_run': '{}/{}/actions/runs/{}'.format(

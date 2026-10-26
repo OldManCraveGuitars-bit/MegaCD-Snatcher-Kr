@@ -12,12 +12,21 @@ printf '%s  core-source/modified-core-source.zip\n' "$CORE_SHA" | sha256sum -c -
 python3 -m zipfile -e core-source/modified-core-source.zip vita-build/core
 git clone --depth 1 --branch v1.22.2 https://github.com/libretro/RetroArch.git vita-build/RetroArch
 test "$(git -C vita-build/RetroArch rev-parse HEAD)" = "$RA_COMMIT"
+git -C vita-build/RetroArch apply --check ../../tools/retroarch-vita-gcc15.patch
+git -C vita-build/RetroArch apply ../../tools/retroarch-vita-gcc15.patch
 git -C vita-build/RetroArch archive --prefix=RetroArch/ HEAD | tar -x -C vita-build/source
+cp vita-build/RetroArch/gfx/drivers/vita2d_gfx.c vita-build/source/RetroArch/gfx/drivers/
+git -C vita-build/RetroArch diff > vita-build/source/RETROARCH-CHANGES.patch
 cp core-source/modified-core-source.zip vita-build/source/
 cp tools/build_vita.sh tools/verify_vita.py vita-build/source/build-tools/
+cp tools/retroarch-vita-gcc15.patch vita-build/source/build-tools/
 cp .github/workflows/build-vita-core.yml vita-build/source/build-tools/
 arm-vita-eabi-gcc --version > vita-out/toolchain.txt
 find "$VITASDK" -iname '*license*' -o -iname '*copyright*' > vita-out/sdk-license-paths.txt
+mkdir -p vita-out/licenses
+cp -a "$VITASDK/share/vdpm/licenses" vita-out/licenses/sdk-packages
+cp -a vita-out/licenses vita-build/source/SDK-LICENSES
+find "$VITASDK/share/vdpm" -maxdepth 2 -type f > vita-out/sdk-package-records.txt
 make -C vita-build/core -f Makefile.libretro platform=vita -j2
 cp vita-build/core/genesis_plus_gx_libretro_vita.a vita-build/RetroArch/libretro_vita.a
 make -C vita-build/RetroArch -f Makefile.vita -j2 retroarch_vita.self
