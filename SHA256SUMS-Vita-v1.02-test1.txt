@@ -1,0 +1,4 @@
+669070ac0ec350adb0fb837cd0108d416299c565ffb860aa73ee9b35b3adf628  BUILD-VITA.json
+15180ca012d9e9381f6e617c7554435b7dda73ae59df19097cc12af804c2e251  genesis_plus_gx_snatcher_kr_libretro.self
+336ab4f11fd34652233a5ffb25bf4e599144d99e748a88fbf8e23be893892e94  Snatcher-KR-V1.02-Vita-source.tar.xz
+12d0778ca3f0608d0c53944d52072833f7b87c6b0f2e9c820ad7ddaed62b186f  Snatcher-KR-V1.02-Vita-test1.zip
