@@ -25,7 +25,8 @@ def main():
     assert report['vita_hardware_tested'] is False
     binary = args.build / 'genesis_plus_gx_snatcher_kr_libretro.self'
     assert digest(binary) == report['sha256']
-    source = args.build / 'Snatcher-KR-V1.0-Vita-source.tar.xz'
+    assert report['version'] == 'V1.02-Vita-test1' and report['core_revision'] == 'r62'
+    source = args.build / 'Snatcher-KR-V1.02-Vita-source.tar.xz'
     # Check downloaded files against the checksums made by the build runner.
     for line in (args.build / 'SHA256SUMS-build.txt').read_text().splitlines():
         expected, name = line.split(maxsplit=1)
@@ -59,7 +60,7 @@ def main():
     for path in sorted((args.build / 'licenses').rglob('*')):
         if path.is_file():
             contents[path.relative_to(args.build).as_posix()] = path.read_bytes()
-    zip_path = args.output / 'Snatcher-KR-V1.0-Vita-test1.zip'
+    zip_path = args.output / 'Snatcher-KR-V1.02-Vita-test1.zip'
     with zipfile.ZipFile(zip_path, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name, data in contents.items():
             archive.writestr(name, data)
@@ -69,7 +70,7 @@ def main():
         for name, data in contents.items():
             assert archive.read(name) == data
     sums = ''.join(f'{digest(path)}  {path.name}\n' for path in sorted(args.output.iterdir()))
-    (args.output / 'SHA256SUMS-Vita-test1.txt').write_text(sums, encoding='utf-8')
+    (args.output / 'SHA256SUMS-Vita-v1.02-test1.txt').write_text(sums, encoding='utf-8')
     print(json.dumps({'packaged': len(contents), 'assets': 5, 'output': str(args.output)}, ensure_ascii=False))
 
 

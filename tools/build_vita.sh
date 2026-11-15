@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Invoke from the repository root, inside the image pinned in the workflow.
-CORE_SHA=b45699c9a6b7ed35b075ed0bd9240bd1eb69aa814012c19aee14ef0cc6b79505
+CORE_SHA=58b49adcbb6bfe9bd3595e42866968053ccd7f9755d31bbae1588fc722c95741
 RA_COMMIT=69a4f0ea1e8aaf442ae4858f2e7f2b31a1776576
 SDK_IMAGE=vitasdk/vitasdk@sha256:7f5eee50ff95b73c8c847dbfef6227aa0035886444b4d0254c21da8369ff1efc
 export CORE_SHA RA_COMMIT SDK_IMAGE
@@ -34,5 +34,5 @@ cp vita-build/core/genesis_plus_gx_libretro_vita.a vita-build/RetroArch/libretro
 make -C vita-build/RetroArch -f Makefile.vita -j4 retroarch_vita.self
 python3 tools/verify_vita.py
 cp vita-out/BUILD-VITA.json vita-build/source/
-tar -cJf vita-out/Snatcher-KR-V1.0-Vita-source.tar.xz -C vita-build/source .
+tar -cJf vita-out/Snatcher-KR-V1.02-Vita-source.tar.xz -C vita-build/source .
 sha256sum vita-out/*.self vita-out/*.tar.xz > vita-out/SHA256SUMS-build.txt

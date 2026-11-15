@@ -16,6 +16,7 @@ CORE = ROOT / 'vita-build/core'
 RA = ROOT / 'vita-build/RetroArch'
 OUT = ROOT / 'vita-out'
 HEADER_SHA = 'adf5a4c792801fb917ace5af6e2ad0cb4165f96dddee09222efb025ef4e875ad'
+OVERLAY_SHA = '30d8dd841a9b7f815a6c2188cd964f961433d5e6fb947c242c1c4bf8ccdb7f2e'
 
 
 def sha(data):
@@ -25,6 +26,7 @@ def sha(data):
 def main():
     header = (CORE / 'core/kr_host_caption_assets.h').read_bytes()
     assert sha(header) == HEADER_SHA, 'caption source changed'
+    assert sha((CORE / 'core/host_caption_overlay.h').read_bytes()) == OVERLAY_SHA, 'ACT transition fix missing'
     banks = {
         name.decode(): bytes(int(v, 16) for v in re.findall(rb'0x([0-9a-fA-F]{2})', body))
         for name, body in re.findall(
@@ -54,11 +56,12 @@ def main():
     output = OUT / 'genesis_plus_gx_snatcher_kr_libretro.self'
     shutil.copy2(source_self, output)
     build = {
-        'version': 'V1.0-Vita-test1', 'status': 'build_and_static_checks_passed',
+        'version': 'V1.02-Vita-test1', 'core_revision': 'r62', 'status': 'build_and_static_checks_passed',
         'vita_hardware_tested': False, 'vita_emulator_tested': False,
         'gameplay_verified': False, 'frame_rate_verified': False,
         'core_source_sha256': os.environ['CORE_SHA'],
         'caption_header_sha256': HEADER_SHA,
+        'caption_overlay_sha256': OVERLAY_SHA,
         'retroarch_tag': 'v1.22.2', 'retroarch_commit': os.environ['RA_COMMIT'],
         'retroarch_patch': 'tools/retroarch-vita-gcc15.patch',
         'retroarch_patch_sha256': sha((ROOT / 'tools/retroarch-vita-gcc15.patch').read_bytes()),
